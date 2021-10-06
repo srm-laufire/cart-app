@@ -8,13 +8,13 @@ describe('itemInput', () => {
 	const item = rndValue(items);
 	const context = {
 		state: {
-			itemInput: item,
+			item,
 		},
 		config: {
 			items,
 		},
 		actions: {
-			itemInput: jest.fn(),
+			setItem: jest.fn(),
 		},
 	};
 
@@ -40,6 +40,6 @@ describe('itemInput', () => {
 
 		fireEvent.change(component, { target: { value }});
 
-		expect(context.actions.itemInput).toHaveBeenCalledWith(value);
+		expect(context.actions.setItem).toHaveBeenCalledWith(value);
 	});
 });

@@ -1,10 +1,10 @@
 import actions from './actions';
 
 test('itemInput', () => {
-	const { itemInput } = actions;
+	const { setItem } = actions;
 	const data = Symbol('data');
 
-	const result = itemInput({ data });
+	const result = setItem({ data });
 
-	expect(result).toEqual({ itemInput: data });
+	expect(result).toEqual({ item: data });
 });

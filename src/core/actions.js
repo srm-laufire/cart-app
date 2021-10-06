@@ -1,6 +1,6 @@
 const actions = {
-	itemInput: ({ data }) => ({
-		itemInput: data,
+	setItem: ({ data }) => ({
+		item: data,
 	}),
 };
 

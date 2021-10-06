@@ -4,13 +4,13 @@ const Option = (item) =>
 	<option key={ item } role="option" value={ item }>{ item }</option>;
 
 const ItemInput = (context) => {
-	const { config: { items }, actions, state: { itemInput }} = context;
+	const { config: { items }, actions, state: { item }} = context;
 
 	return (
 		<select
-			value={ itemInput }
+			value={ item }
 			role="itemInput"
-			onChange={ (evt) => actions.itemInput(evt.target.value) }
+			onChange={ (evt) => actions.setItem(evt.target.value) }
 		>
 			{ items.map(Option)}
 		</select>);
