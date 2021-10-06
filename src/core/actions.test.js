@@ -1,10 +1,17 @@
 import actions from './actions';
 
-test('itemInput', () => {
-	const { setItem } = actions;
-	const data = Symbol('data');
+describe('actions', () => {
+	const actionNames = [
+		['setItem', 'item'],
+		['setRate', 'rate'],
+		['setQuantity', 'quantity'],
+	];
 
-	const result = setItem({ data });
+	test.each(actionNames)('%p', (actionName, impactedKey) => {
+		const data = Symbol('data');
 
-	expect(result).toEqual({ item: data });
+		const result = actions[actionName]({ data });
+
+		expect(result).toEqual({ [impactedKey]: data });
+	});
 });
