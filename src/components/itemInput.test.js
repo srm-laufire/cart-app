@@ -14,7 +14,7 @@ describe('itemInput', () => {
 			items,
 		},
 		actions: {
-			setItemInput: jest.fn(),
+			itemInput: jest.fn(),
 		},
 	};
 
@@ -33,13 +33,13 @@ describe('itemInput', () => {
 		expect(itemInput.value).toEqual(item);
 	});
 
-	test('when clicked triggers the action, setItemInput', () => {
+	test('when clicked triggers the action, itemInput', () => {
 		const value = item;
 
 		const component = render(ItemInput(context)).getByRole('itemInput');
 
 		fireEvent.change(component, { target: { value }});
 
-		expect(context.actions.setItemInput).toHaveBeenCalledWith(value);
+		expect(context.actions.itemInput).toHaveBeenCalledWith(value);
 	});
 });

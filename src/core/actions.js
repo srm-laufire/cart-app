@@ -1,5 +1,5 @@
 const actions = {
-	setItemInput: ({ data }) => ({
+	itemInput: ({ data }) => ({
 		itemInput: data,
 	}),
 };
