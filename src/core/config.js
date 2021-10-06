@@ -1,5 +1,9 @@
 const config = {
-	message: 'Ready to start.',
+	items: [
+		'Apple',
+		'Grape',
+		'Banana',
+	],
 };
 
 export default config;

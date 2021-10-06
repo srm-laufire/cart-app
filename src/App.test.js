@@ -1,13 +1,21 @@
-import { render, screen } from '@testing-library/react';
+// eslint-disable-next-line react/display-name
+jest.mock('./components/itemInput', () => () => <div role="itemInput"/>);
 
+import { React } from 'react';
+import { render } from '@testing-library/react';
 import App from './App';
-import context from './core/context';
 
 describe('App', () => {
-	test('renders with a welcome message', () => {
-		render(App(context));
-		const someText = screen.getByText(context.config.message);
+	test('renders the appropriate component', () => {
+		const { getByRole } = render(<App/>);
 
-		expect(someText).toBeInTheDocument();
+		const components = ['itemInput'];
+
+		components.forEach((component) => {
+			expect(getByRole(component)).toBeInTheDocument();
+		});
+
+		expect(getByRole('app')).toBeInTheDocument();
+		expect(getByRole('app')).toHaveClass('App');
 	});
 });
