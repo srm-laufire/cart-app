@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-jest.mock('./components/itemInput', () => () => <div role="itemInput"/>);
+jest.mock('./components/itemInput', () => () => <div role="item"/>);
 jest.mock('./components/genInput',
 	() => (value) => () => <div role={ value }/>);
 
@@ -11,7 +11,7 @@ describe('App', () => {
 	test('renders the appropriate component', () => {
 		const { getByRole } = render(<App/>);
 
-		const components = ['itemInput', 'rate', 'quantity'];
+		const components = ['item', 'rate', 'quantity'];
 
 		components.forEach((component) => {
 			expect(getByRole(component)).toBeInTheDocument();

@@ -20,7 +20,7 @@ describe('itemInput', () => {
 
 	test('renders the component as expected', () => {
 		const { getByRole, getAllByRole } = render(ItemInput(context));
-		const itemInput = getByRole('itemInput');
+		const itemInput = getByRole('item');
 		const options = getAllByRole('option');
 		const values = options.map((data) => data.value);
 
@@ -36,7 +36,7 @@ describe('itemInput', () => {
 	test('when clicked triggers the action, itemInput', () => {
 		const value = item;
 
-		const component = render(ItemInput(context)).getByRole('itemInput');
+		const component = render(ItemInput(context)).getByRole('item');
 
 		fireEvent.change(component, { target: { value }});
 

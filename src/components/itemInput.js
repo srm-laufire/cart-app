@@ -9,7 +9,7 @@ const ItemInput = (context) => {
 	return (
 		<select
 			value={ item }
-			role="itemInput"
+			role="item"
 			onChange={ (evt) => actions.setItem(evt.target.value) }
 		>
 			{ items.map(Option)}
