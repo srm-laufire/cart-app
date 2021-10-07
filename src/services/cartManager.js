@@ -13,6 +13,9 @@ const CartManager = {
 			...context.state.items,
 			CartManager.getItem(context),
 		],
+
+	isEmpty: ({ state: { rate, quantity }}) =>
+		rate === '' || quantity === '',
 };
 
 export default CartManager;

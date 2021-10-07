@@ -1,8 +1,10 @@
 import CartManager from './cartManager';
 import * as helpers from '../test/helpers';
+import { keys } from '@laufire/utils/collection';
+import { rndValue } from '@laufire/utils/random';
 
 describe('cartManager', () => {
-	const { getItem, addItem } = CartManager;
+	const { getItem, addItem, isEmpty } = CartManager;
 
 	test('getItem', () => {
 		const id = Symbol('id');
@@ -47,5 +49,29 @@ describe('cartManager', () => {
 
 		expect(result).toEqual(expected);
 		expect(CartManager.getItem).toHaveBeenCalledWith(context);
+	});
+
+	describe('isEmpty', () => {
+		const { getRndString } = helpers;
+		const allFull = {
+			rate: getRndString(),
+			quantity: getRndString(),
+		};
+		const inputs = keys(allFull);
+		const keyToEmpty = rndValue(inputs);
+		const oneEmpty = {
+			...allFull,
+			[keyToEmpty]: '',
+		};
+		const expectations = [
+			[allFull, false],
+			[oneEmpty, true],
+		];
+
+		test.each(expectations)('', (state, expected) => {
+			const result = isEmpty({ state });
+
+			expect(result).toEqual(expected);
+		});
 	});
 });
