@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import getRndNumber from '../test/helpers';
+import { getRndNumber } from '../test/helpers';
 import genInput from './genInput';
 
 describe('genInput', () => {
