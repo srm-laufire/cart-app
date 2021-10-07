@@ -5,7 +5,7 @@
 		font-weight: bold;
 	}
 
-	.item, .rate, .quantity, .price {
+	.item > span {
 		padding: 0.25em;
 	}
 }

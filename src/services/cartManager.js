@@ -15,7 +15,7 @@ const CartManager = {
 		],
 
 	isEmpty: ({ state: { rate, quantity }}) =>
-		rate === '' || quantity === '',
+		[rate, quantity].includes(''),
 
 	getPrice: ({ rate, quantity }) => rate * quantity,
 };

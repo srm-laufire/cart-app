@@ -57,8 +57,7 @@ describe('cartManager', () => {
 			rate: getRndString(),
 			quantity: getRndString(),
 		};
-		const inputs = keys(allFull);
-		const keyToEmpty = rndValue(inputs);
+		const keyToEmpty = rndValue(keys(allFull));
 		const oneEmpty = {
 			...allFull,
 			[keyToEmpty]: '',

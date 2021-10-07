@@ -18,28 +18,20 @@ describe('item', () => {
 	});
 
 	test('renders the component as expected', () => {
-		const component = render(Item(state)).getByRole('items');
+		const { getByRole } = render(Item(state));
 
-		expect(component).toBeInTheDocument();
+		expect(getByRole('items')).toBeInTheDocument();
+		expect(getByRole('items')).toHaveClass('item');
+		expect(getByRole('price')).toHaveTextContent(price);
+		expect(CartManager.getPrice).toHaveBeenCalledWith(state);
 	});
 
-	test('renders the children with appropriate class', () => {
+	test('renders the children with appropriate text', () => {
 		const { getByRole } = render(Item(state));
 		const { item, rate, quantity } = state;
 
 		map({ item, rate, quantity }, (value, key) => {
-			const children = getByRole(key);
-
-			expect(children).toHaveClass(key);
-			expect(children).toHaveTextContent(value);
+			expect(getByRole(key)).toHaveTextContent(value);
 		});
-	});
-
-	test('renders the item price as expected', () => {
-		const { getByRole } = render(Item(state));
-
-		expect(getByRole('price')).toHaveClass('price');
-		expect(getByRole('price')).toHaveTextContent(price);
-		expect(CartManager.getPrice).toHaveBeenCalledWith(state);
 	});
 });
