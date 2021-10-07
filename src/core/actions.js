@@ -1,3 +1,5 @@
+import CartManager from '../services/cartManager';
+
 const actions = {
 	setItem: ({ data }) => ({
 		item: data,
@@ -9,6 +11,10 @@ const actions = {
 
 	setQuantity: ({ data }) => ({
 		quantity: data,
+	}),
+
+	addItem: (context) => ({
+		items: CartManager.addItem(context),
 	}),
 };
 
