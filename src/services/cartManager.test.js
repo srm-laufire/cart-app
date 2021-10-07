@@ -4,7 +4,7 @@ import { keys } from '@laufire/utils/collection';
 import { rndValue } from '@laufire/utils/random';
 
 describe('cartManager', () => {
-	const { getItem, addItem, isEmpty } = CartManager;
+	const { getItem, addItem, isEmpty, getPrice } = CartManager;
 
 	test('getItem', () => {
 		const id = Symbol('id');
@@ -73,5 +73,16 @@ describe('cartManager', () => {
 
 			expect(result).toEqual(expected);
 		});
+	});
+
+	test('getPrice', () => {
+		const { getRndNumber } = helpers;
+		const rate = getRndNumber();
+		const quantity = getRndNumber();
+		const expected = rate * quantity;
+
+		const result = getPrice({ rate, quantity });
+
+		expect(result).toEqual(expected);
 	});
 });

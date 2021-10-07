@@ -16,6 +16,8 @@ const CartManager = {
 
 	isEmpty: ({ state: { rate, quantity }}) =>
 		rate === '' || quantity === '',
+
+	getPrice: ({ rate, quantity }) => rate * quantity,
 };
 
 export default CartManager;
