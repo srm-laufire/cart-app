@@ -18,6 +18,9 @@ const CartManager = {
 		[rate, quantity].includes(''),
 
 	getPrice: ({ rate, quantity }) => rate * quantity,
+
+	getTotal: ({ state: { items }}) =>
+		items.reduce((acc, item) => acc + CartManager.getPrice(item), 0),
 };
 
 export default CartManager;
